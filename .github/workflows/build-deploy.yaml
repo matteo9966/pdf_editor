@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - '*' # name of the branch you are pushing to
+  workflow_dispatch:
 
 jobs:
   build:
