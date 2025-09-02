@@ -1,20 +1,20 @@
 import { pdfjs, Document, Page } from "react-pdf";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
   import.meta.url
 ).toString();
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
-import type { PDFDocumentProxy,getDocument } from 'pdfjs-dist';
+import type { PDFDocumentProxy} from 'pdfjs-dist';
 import { useResizeObserver } from "../utils/useResizeObserver";
 
 export const RenderPDF = () => {
 //   const [containerRef,setContainerRef] = useState<HTMLElement|null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [numPages, setNumPages] = useState<number>();
-  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [numPages] = useState<number>();
+  const [pageNumber] = useState<number>(1);
   const [pdfProxy,setPdfProxy] = useState<PDFDocumentProxy|null>(null);
  
   const objURL = useMemo(() => {
@@ -53,7 +53,7 @@ export const RenderPDF = () => {
         
         }} >
             {
-                Array.from(new Array(numPages),(el,index)=>(
+                Array.from(new Array(numPages),(_el,index)=>(
                     <Page 
                      key={`page_${index+1}`}
                      pageNumber={index+1}
