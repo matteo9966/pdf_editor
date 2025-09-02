@@ -5,6 +5,7 @@ import "./App.css";
 import { PDFDocument, PDFForm } from "pdf-lib";
 import { LoadFileArrayBuffer } from "./components/LoadFileArrayBuffer";
 import { GeneratePDFFROMJSON } from "./components/GeneratePDFFromJSON";
+import { RenderPDF } from "./components/RebderPDF";
 
 function App() {
   const [formValue, setFormValue] = useState<PDFForm | null>(null);
@@ -14,6 +15,10 @@ function App() {
   const [pdfDoc,setPdfDoc] = useState<PDFDocument|null>(null)
   return (
     <div>
+      <div>
+        <h1>Render il pdf in un contenitore:</h1>
+        <RenderPDF/>
+      </div>
       <div>
         <h1>Carica Il File PDF:</h1>
         <LoadFileArrayBuffer
